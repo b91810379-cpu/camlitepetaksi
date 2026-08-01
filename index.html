@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çamlıtepe Taksi - Batman 7/24 Güvenli Taksi Durağı</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #111;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .top-bar {
+            background: #111;
+            color: #ffcc00;
+            padding: 12px 0;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+        }
+        header {
+            background: #ffcc00;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-icon {
+            font-size: 24px;
+            color: #111;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .logo-area h1 {
+            font-size: 22px;
+            color: #111;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+        .hero {
+            background: #181818;
+            text-align: center;
+            padding: 40px 20px 60px 20px;
+            position: relative;
+        }
+        .car-image-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        .car-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        .hero-subtitle {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-call-box {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, #d4af37, #aa8c2c);
+            color: #111;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+        }
+        .btn-call-box span {
+            margin-left: 10px;
+        }
+        .direct-phone {
+            display: block;
+            color: #ffcc00;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .section-padding {
+            padding: 60px 20px;
+            background: #fff;
+            color: #333;
+        }
+        .section-gray {
+            padding: 60px 20px;
+            background: #eaeaea;
+            color: #333;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+            color: #111;
+            text-transform: uppercase;
+        }
+        .grid-3 {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid #ffcc00;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #111;
+        }
+        .card p {
+            color: #666;
+            font-size: 15px;
+        }
+        .info-box {
+            max-width: 1100px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .info-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #111;
+        }
+        .info-box p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 16px;
+        }
+        .address-box {
+            background: #111;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 5px solid #ffcc00;
+            text-align: left;
+        }
+        .address-box h4 {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        footer {
+            background: #0b0b0b;
+            color: #aaa;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Telefon Çubuğu -->
+    <div class="top-bar">
+        📞 0530 637 84 49
+    </div>
+
+    <!-- Header / Logo Alanı -->
+    <header>
+        <div class="container">
+            <div class="menu-icon">☰</div>
+            <div class="logo-area">
+                <h1>Çamlıtepe Taksi</h1>
+            </div>
+            <div style="width: 24px;"></div>
+        </div>
+    </header>
+
+    <!-- Hero / Giriş Bölümü -->
+    <section class="hero">
+        <div class="car-image-container">
+            <!-- DİKKAT: Buradaki src="fiat-taksi.jpg" kısmı senin projendeki fotoğrafın adıdır. Kendi görselini fiat-taksi.jpg olarak klasöre atarsan doğrudan açılır. -->
+            <img src="fiat-taksi.jpg" alt="Batman Çamlıtepe Fiat Linea Taksi">
+        </div>
+
+        <div class="hero-subtitle">Batman Çamlıtepe Taksi Durağı</div>
+        <h2>Batman Taksi</h2>
+        <p>Batman Taksi hizmetleri, 7/24 hizmet vererek acil durumlar ve ani seyahat ihtiyaçları için ideal bir çözüm sunar</p>
+        
+        <a href="tel:05306378449" class="btn-call-box">
+            📞 <span>Bizi Arayın !</span>
+        </a>
+        
+        <a href="tel:05306378449" class="direct-phone">0530 637 84 49</a>
+    </section>
+
+    <!-- Hizmetlerimiz Bölümü -->
+    <section class="section-padding">
+        <h2 class="section-title">Hizmetlerimiz</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>🚖 7/24 Kesintisiz Ulaşım</h3>
+                <p>Gece gündüz demeden Batman genelinde aktif olarak hizmet veriyor, dilediğiniz an kapınıza geliyoruz.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Hızlı ve Güvenli Sürüş</h3>
+                <p>Şehir içi ve şehir dışı yolculuklarınızda trafik kurallarına uygun, güvenli ve hızlı seyahat imkanı sunuyoruz.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Temiz ve Konforlu Araçlar</h3>
+                <p>Düzenli bakımları yapılan, hijyenik ve konforlu araçlarımızla yolculuğunuzun keyfini çıkarın.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Durak Konum Bilgisi Bölümü -->
+    <section class="section-gray">
+        <div class="info-box">
+            <h3>Durak Konumumuz ve İletişim</h3>
+            <p>Çamlıtepe Taksi olarak müşteri memnuniyetini her zaman ilk sırada tutuyoruz. Acil işlerinizde, hastane ziyaretlerinizde veya şehir içi ulaşımlarınızda zamanında adresinizde oluyoruz.</p>
+            
+            <div class="address-box">
+                <h4>📍 Durak Adresimiz:</h4>
+                <p style="color: #fff; margin: 0;">Çamlıtepe, Dünya hastanesi önü, 72060 Batman Merkez/Batman</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Alt Alan -->
+    <footer>
+        <p>&copy; 2026 Çamlıtepe Taksi Batman - Tüm Hakları Saklıdır.</p>
+        <p>Bize Ulaşın:</p>
+        <a href="tel:05306378449">0530 637 84 49</a>
+    </footer>
+
+    <!-- Sağ Alt WhatsApp Butonu -->
+    <a href="https://wa.me/905306378449" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+</body>
+</html>
+<img src="1000022173.jpg" alt="Batman Çamlıtepe Taksi">
