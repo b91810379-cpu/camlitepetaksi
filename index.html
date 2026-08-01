@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çamlıtepe Taksi - Batman 7/24 Kesintisiz ve Güvenli Ulaşım</title>
+    <meta name="description" content="Batman Çamlıtepe Taksi Durağı. 7/24 güvenli, hızlı ve konforlu ulaşım. Dünya Hastanesi önü. Hemen arayın: 0530 637 84 49">
+    <style>
+        /* === GENEL AYARLAR (KOMPAKT) === */
+        :root {
+            --primary-color: #ffcc00;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --light-bg: #f5f5f5;
+            --text-light: #f4f4f4;
+            --text-dark: #222;
+            --gray-text: #bbb;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        
+        /* === ÜST BİLGİ ÇUBUĞU === */
+        .top-bar {
+            background: var(--darker-bg);
+            color: var(--primary-color);
+            padding: 6px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            border-bottom: 1px solid #222;
+        }
+        .top-bar-left span { margin-right: 15px; }
+        .top-bar-right a { font-weight: bold; font-size: 14px; }
+
+        /* === MENÜ (HEADER) === */
+        header {
+            background: var(--primary-color);
+            padding: 10px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--darker-bg);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: var(--darker-bg);
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #fff; }
+        
+        /* === GİRİŞ BÖLÜMÜ (HERO) === */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95));
+            padding: 40px 5% 50px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.15);
+            border: 2px solid #333;
+        }
+        .tagline {
+            color: var(--primary-color);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 13px;
+        }
+        .hero h1 {
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.15;
+            font-weight: 900;
+        }
+        .hero p {
+            font-size: 17px;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-size: 17px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--darker-bg);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+        .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover { background: #1ebe57; transform: translateY(-2px); }
+
+        /* === BÖLÜM AYARLARI (KOMPAKT) === */
+        .section { padding: 50px 5%; }
+        .section-light { background-color: var(--light-bg); color: var(--text-dark); }
+        .section-dark { background-color: var(--dark-bg); color: var(--text-light); }
+        .section-darker { background-color: var(--darker-bg); color: var(--text-light); }
+        
+        .section-header { text-align: center; margin-bottom: 35px; max-width: 800px; margin-inline: auto; }
+        .section-header h2 {
+            font-size: 34px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        .section-header p { font-size: 16px; color: var(--gray-text); }
+        .section-light .section-header h2 { color: var(--darker-bg); }
+        .section-light .section-header h2 span { color: #d4a000; }
+        .section-light .section-header p { color: #555; }
+
+        /* === HAKKIMIZDA DETAYLI BÖLÜM === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+            align-items: center;
+        }
+        .about-text h3 { font-size: 24px; margin-bottom: 12px; color: var(--primary-color); }
+        .about-text p { margin-bottom: 12px; font-size: 15px; color: #ccc; text-align: justify; }
+        .about-features { list-style: none; margin-top: 15px; }
+        .about-features li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-features li::before {
+            content: '✓';
+            color: var(--darker-bg);
+            background: var(--primary-color);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* === HİZMETLERİMİZ BÖLÜMÜ === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .service-card {
+            background: #fff;
+            padding: 25px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-bottom: 5px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-icon { font-size: 40px; margin-bottom: 12px; }
+        .service-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--darker-bg); font-weight: 800; }
+        .service-card p { color: #555; font-size: 14px; }
+
+        /* === HİZMET BÖLGELERİMİZ === */
+        .areas-container {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .area-tag {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .area-tag:hover {
+            background: var(--primary-color);
+            color: var(--darker-bg);
+            border-color: var(--primary-color);
+        }
+
+        /* === ÖRNEK FİYAT TARİFESİ === */
+        .pricing-table {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-row:nth-child(even) { background-color: #fafafa; }
+        .pricing-dest { font-size: 16px; font-weight: bold; color: #333; }
+        .pricing-price { font-size: 18px; font-weight: 900; color: #d4a000; }
+        .pricing-note { text-align: center; padding: 15px; background: #fff8e1; color: #8a6800; font-size: 13px; }
+
+        /* === SIKÇA SORULAN SORULAR === */
+        .faq-container { max-width: 800px; margin: auto; }
+        .faq-item {
+            background: #1a1a1a;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            padding: 18px 20px;
+        }
+        .faq-question { font-size: 17px; font-weight: bold; color: var(--primary-color); margin-bottom: 6px; }
+        .faq-answer { color: #ccc; font-size: 14px; }
+
+        /* === İLETİŞİM BÖLÜMÜ === */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .contact-info, .contact-form-box {
+            flex: 1;
+            min-width: 320px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+        .contact-info { background: var(--darker-bg); color: #fff; border-top: 6px solid var(--primary-color); }
+        .contact-item { margin-bottom: 20px; }
+        .contact-item h4 { color: var(--primary-color); font-size: 17px; margin-bottom: 5px; text-transform: uppercase; }
+        .contact-item p { color: #ccc; font-size: 15px; }
+        .contact-phone-big { font-size: 26px; color: #fff; font-weight: 900; display: block; margin-top: 3px; }
+        
+        .contact-form-box h3 { font-size: 22px; margin-bottom: 15px; color: var(--darker-bg); }
+        .contact-form-box input, .contact-form-box textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #fafafa;
+        }
+        .contact-form-box button {
+            width: 100%;
+            background: var(--darker-bg);
+            color: var(--primary-color);
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 900;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .contact-form-box button:hover { background: var(--primary-color); color: var(--darker-bg); }
+
+        /* === FOOTER === */
+        footer {
+            background: #050505;
+            color: #777;
+            padding: 40px 5% 20px;
+            border-top: 1px solid #222;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+            margin-bottom: 25px;
+        }
+        .footer-col h4 { color: var(--primary-color); font-size: 17px; margin-bottom: 12px; text-transform: uppercase; }
+        .footer-col p { margin-bottom: 10px; font-size: 14px; }
+        .footer-links a { display: block; color: #999; margin-bottom: 6px; font-size: 14px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary-color); padding-left: 3px; }
+        .footer-bottom { text-align: center; border-top: 1px solid #1a1a1a; padding-top: 20px; font-size: 13px; }
+
+        /* === WHATSAPP YÜZEN BUTON === */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* === MOBİL UYUM === */
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; gap: 6px; text-align: center; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 15px; }
+            .btn { width: 100%; justify-content: center; }
+            .section { padding: 40px 5%; }
+            .section-header h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÜST BİLGİ (TOP BAR) -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span>📍 Merkez: Dünya Hastanesi Önü, Batman</span>
+            <span>🕒 7/24 Kesintisiz Hizmet</span>
+        </div>
+        <div class="top-bar-right">
+            <span>Acil Taksi:</span> <a href="tel:05306378449">0530 637 84 49</a>
+        </div>
+    </div>
+
+    <!-- MENÜ -->
+    <header>
+        <div class="logo">🚖 Çamlıtepe Taksi</div>
+        <nav class="nav-links">
+            <a href="#hakkimizda">Kurumsal</a>
+            <a href="#hizmetler">Hizmetler</a>
+            <a href="#bolgeler">Bölgeler</a>
+            <a href="#fiyatlar">Tarife</a>
+            <a href="#sss">S.S.S</a>
+            <a href="#iletisim">İletişim</a>
+        </nav>
+    </header>
+
+    <!-- GİRİŞ BÖLÜMÜ (HERO) -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- SENİN İSTEDİĞİN LİNEA/EGEA GÖRSELİ -->
+            <img src="1000022173.jpg" alt="Batman Çamlıtepe Taksi Fiat Linea Sarı Taksi" class="hero-image">
+            
+            <span class="tagline">Batman'ın En Çok Tercih Edilen Taksi Durağı</span>
+            <h1>Şehrin Her Noktasına<br>Güvenli ve Hızlı Ulaşım</h1>
+            <p>Batman merkezde ve tüm ilçelerde, temiz araçlarımız ve profesyonel şoför kadromuzla 7/24 hizmetinizdeyiz. Sizin ve ailenizin güvenliği bizim için her şeyden önemlidir.</p>
+            
+            <div class="cta-buttons">
+                <a href="tel:05306378449" class="btn btn-primary">
+                    📞 Hemen Ara: 0530 637 84 49
+                </a>
+                <a href="https://wa.me/905306378449" class="btn btn-whatsapp">
+                    💬 WhatsApp'tan Konum At
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HAKKIMIZDA BÖLÜMÜ -->
+    <section id="hakkimizda" class="section section-dark">
+        <div class="section-header">
+            <h2>Biz <span>Kimiz?</span></h2>
+            <p>Yılların verdiği tecrübe ile Batman halkına hizmet ediyoruz</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Batman Çamlıtepe Taksi Durağı</h3>
+                <p>Kurulduğumuz ilk günden bu yana, Batman halkının ulaşım ihtiyaçlarını en hızlı, en güvenli ve en konforlu şekilde karşılamayı amaç edindik. "Müşteri değil, misafir" anlayışıyla çıktığımız bu yolda, her geçen gün kendimizi geliştiriyoruz.</p>
+                <p>Dünya Hastanesi mevkisindeki stratejik konumumuz sayesinde acil durumlarda saniyeler içinde yanınızda olabiliyoruz. Araçlarımızın tamamı periyodik bakımdan geçmiş, bakımlı ve temiz sedan araçlardır.</p>
+                <ul class="about-features">
+                    <li>Güler yüzlü ve tecrübeli şoför kadrosu</li>
+                    <li>Sürpriz fiyatlar olmadan taksimetre ile adil ücretlendirme</li>
+                    <li>7 gün 24 saat, tatil demeden kesintisiz hizmet</li>
+                    <li>Aileler için geniş bagajlı ve rahat araçlar</li>
+                </ul>
+            </div>
+            <div>
+                <div style="background: #181818; border-radius: 8px; padding: 30px; text-align: center; border: 1px dashed #444;">
+                    <h3 style="color: var(--primary-color); font-size: 50px; margin-bottom: 10px;">%100</h3>
+                    <p style="font-size: 20px; color: #fff;">Müşteri Memnuniyeti</p>
+                    <p style="color: #aaa; margin-top: 15px; font-size: 14px;">Batman'da binlerce mutlu yolcu taşımanın gururunu yaşıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HİZMETLERİMİZ -->
+    <section id="hizmetler" class="section section-light">
+        <div class="section-header">
+            <h2>Profesyonel <span>Hizmetlerimiz</span></h2>
+            <p>Sadece A noktasından B noktasına gitmek değil, kaliteli bir yolculuk deneyimi</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏙️</div>
+                <h3>Şehir İçi Hızlı Ulaşım</h3>
+                <p>Batman'ın trafiğini ve kestirme yollarını iyi biliyoruz. İşe, okula veya randevunuza geç kalmadan, stres yaşamadan güvenle ulaşın.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h3>Havalimanı Transferi</h3>
+                <p>Batman Havalimanı uçuş saatlerinize uygun olarak sizi evinizden alıyor, uçuş sonrası da havalimanında sizi bekliyoruz. Eşyalarınız güvende.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>Acil Hastane Ulaşımı</h3>
+                <p>Dünya Hastanesi önündeki durağımız sayesinde, hastane gidiş ve çıkışlarınızda, acil durumlarda önceliğimiz her zaman sizsiniz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛣️</div>
+                <h3>Şehirler Arası Seyahat</h3>
+                <p>Diyarbakır, Mardin, Siirt veya dilediğiniz herhangi bir ile özel şoförlü araç konforunda, güvenli ve uygun fiyatlı seyahat imkanı sunuyoruz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Kurye ve Paket Gönderimi</h3>
+                <p>Sizin gitmenize gerek kalmadan, acil ulaştırılması gereken evrak, paket veya eşyalarınızı sizin adınıza teslim ediyoruz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌙</div>
+                <h3>7/24 Gece Taksi</h3>
+                <p>Gecenin geç saatlerinde araç bulma derdine son. Nöbetçi araçlarımızla gece gündüz demeden bir telefonla kapınızdayız.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HİZMET BÖLGELERİMİZ -->
+    <section id="bolgeler" class="section section-darker">
+        <div class="section-header">
+            <h2>Hizmet <span>Bölgelerimiz</span></h2>
+            <p>Batman'ın her mahallesine en fazla 5-10 dakika içinde ulaşıyoruz</p>
+        </div>
+        <div class="areas-container">
+            <span class="area-tag">📍 Çamlıtepe Mahallesi</span>
+            <span class="area-tag">📍 Gültepe Mahallesi</span>
+            <span class="area-tag">?
